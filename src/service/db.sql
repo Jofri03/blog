@@ -9,7 +9,7 @@ create table user(
   username varchar(50),
   pwd varchar(50),
   primary key(id)
-)
+);
 
 drop table if exists blog;
 create table blog(
@@ -19,4 +19,8 @@ create table blog(
   user_id int,
   primary key(id),
   foreign key(user_id) references user(id)
-)
+);
+
+
+insert into user(id, email, username, pwd) values(1001, "cyang@mum.edu", "cyang", "123456");
+insert into blog(id, title, content, user_id) values(2001, "This is my First Blog", "Hi there!", 1001);
