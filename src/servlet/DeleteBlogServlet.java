@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class BlogListController
+ * Servlet implementation class DeleteBlogServlet
  */
-@WebServlet("/BlogListController")
-public class BlogListController extends HttpServlet {
+@WebServlet("/DeleteBlogServlet")
+public class DeleteBlogServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BlogListController() {
+    public DeleteBlogServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
