@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class EditBlogController
+ * Servlet implementation class NewBlogServlet
  */
-@WebServlet("/EditBlogController")
-public class EditBlogController extends HttpServlet {
+@WebServlet("/NewBlogServlet")
+public class NewBlogServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EditBlogController() {
+    public NewBlogServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,8 +26,13 @@ public class EditBlogController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+		DataService ds = new DataService();
+		Blog blog = new Blog();
+		blog.setTitle(title);
+		blog.setContent(content);
+		ds.newblog(blog);
 	}
 
 }
