@@ -11,5 +11,6 @@
 	<classpathentry kind="lib" path="C:/Users/985801/eclipse-workspace/blog/lib/javax.servlet-api.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="lib" path="C:/Users/985801/eclipse-workspace/blog/lib/mysql-connector-java-5.1.46-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/985801/eclipse-workspace/blog/lib/gson-2.8.2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
