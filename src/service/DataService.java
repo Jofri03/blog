@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Blog;
+import com.google.gson.*;
 
 // The Service for Blog
 public class DataService {
@@ -37,6 +38,9 @@ public class DataService {
       }
       return blogs;
     }
+    public String getAllJson() throws SQLException {
+    	return new Gson().toJson(this.getAll());
+    }
 
     // Fetch one blog by id.
     public Blog getOne(int id) throws SQLException {
@@ -52,6 +56,10 @@ public class DataService {
       blog.setTitle(title);
       blog.setContent(content);
       return blog;
+    }
+    
+    public String getOneJson(int id) throws SQLException {
+    	return new Gson().toJson(this.getOne(id));
     }
 
     // Add a new blog.
