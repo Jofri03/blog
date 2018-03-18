@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import service.*;
+import model.*;
+
 /**
  * Servlet implementation class NewBlogServlet
  */
