@@ -19,8 +19,26 @@ public class DataService {
         System.out.println(ex);
       }
     }
-
+    // select id from user where username =? and pwd=?
     // Fetch all the blogs at once.
+    public int login(String username, String password) throws SQLException
+    {   
+    	
+    	 String SQL = " SELECT id from user where username = ? and pwd=?";
+    	 PreparedStatement ps = conn.prepareStatement(SQL);
+    	 ps.setString(1, username);
+    	 ps.setString(2, password);
+    	 ResultSet rs = ps.executeQuery();
+    	 int id=-888;
+         while (rs.next()) {
+        	  id = rs.getInt("id");
+        }
+         return id;
+         
+    
+    }
+    
+    
     public List<Blog> getAll() throws SQLException {
       List<Blog> blogs = new ArrayList<>();
       Statement stmt = conn.createStatement();
@@ -99,4 +117,7 @@ public class DataService {
       pstmt.executeUpdate();
       return true;
     }
+    
+    //TODO login varify 1.String username ,2.password  return count(*)  1
+    
 }

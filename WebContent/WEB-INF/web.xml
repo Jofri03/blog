@@ -10,6 +10,16 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
+   <servlet>
+  	<servlet-name>LoginVerifiedServlet</servlet-name>
+  	<servlet-class>servlet.LoginVerifiedServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>LoginVerifiedServlet</servlet-name>
+  	<url-pattern>/login</url-pattern>
+    </servlet-mapping>
+    
+    
   <servlet>
   	<servlet-name>NewBlogServlet</servlet-name>
   	<servlet-class>servlet.NewServlet</servlet-class>
@@ -52,6 +62,7 @@
   <servlet-mapping>
   	<servlet-name>ViewBlogServlet</servlet-name>
   	<url-pattern>/view</url-pattern>
+  	
   </servlet-mapping>  
     <servlet>
   	<servlet-name>DeleteBlogServlet</servlet-name>
@@ -61,5 +72,8 @@
   	<servlet-name>DeleteBlogServlet</servlet-name>
   	<url-pattern>/delete</url-pattern>
   </servlet-mapping>
+  
+  
+ 
   
 </web-app>

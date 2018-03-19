@@ -36,6 +36,8 @@ public class BlogListServlet extends HttpServlet {
 		
 		// Collect blogs. (Matthew 3/19)
 		DataService ds = new DataService();
+		//TODO request.getsesion("USER_NAME");
+		
 		List<Blog> blogs = null;
 		try {
 			blogs = ds.getAll();
