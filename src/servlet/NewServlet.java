@@ -3,7 +3,6 @@ package servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.Arrays;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,48 +14,53 @@ import model.Blog;
 import service.DataService;
 
 /**
- * Servlet implementation class NewBlogServlet
+ * Servlet implementation class NewServlet
  */
-@WebServlet("/NewBlogServlet")
-public class NewBlogServlet extends HttpServlet {
+@WebServlet("/NewServlet")
+public class NewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NewBlogServlet() {
+    public NewServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		PrintWriter out = response.getWriter();
 		
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
+		
 		DataService ds = new DataService();
 		Blog blog = new Blog();
 		blog.setUserId(1001);
 		blog.setTitle(title);
 		blog.setContent(content);
-		response.setContentType("application/json");
-		response.setCharacterEncoding("UTF-8");
-		out.flush();
-		boolean success = false;
 		try {
-			success = ds.add(blog);
+			boolean success = ds.add(blog);
+			response.setContentType("application/json");
+			response.setCharacterEncoding("UTF-8");
+			out.print(String.format("{'success':'{0}'}", success));
+			out.flush();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		out.print(String.format("{'success':'{0}'}", success));
+	}
 
-		
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

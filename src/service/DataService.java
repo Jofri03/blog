@@ -13,8 +13,8 @@ public class DataService {
     private Connection conn;
     public DataService() {
       try {
-        Class.forName("com.mysql.jdbc.Driver");
-        this.conn = DriverManager.getConnection("jdbc:mysql://108.61.89.50:3306/blogdb?useSSL=false", "cun", "123456");
+        Class.forName("com.mysql.jdbc.Driver").newInstance();
+        this.conn = DriverManager.getConnection("jdbc:mysql://45.77.144.61:3306/blogdb?useSSL=false", "cun", "123456");
       } catch (Exception ex) {
         System.out.println(ex);
       }
@@ -69,6 +69,7 @@ public class DataService {
       pstmt.setString(1, blog.getTitle());
       pstmt.setString(2, blog.getContent());
       pstmt.setInt(3, blog.getUserId());
+      System.out.println(pstmt);
       int count = pstmt.executeUpdate();
       return count > 0;
     }
