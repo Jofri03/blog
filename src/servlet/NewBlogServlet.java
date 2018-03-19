@@ -27,12 +27,12 @@ public class NewBlogServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String title = request.getParameter("title");
-		String content = request.getParameter("content");
-		DataService ds = new DataService();
-		Blog blog = new Blog();
-		blog.setTitle(title);
-		blog.setContent(content);
-		ds.newblog(blog);
+//		String content = request.getParameter("content");
+//		DataService ds = new DataService();
+//		Blog blog = new Blog();
+//		blog.setTitle(title);
+//		blog.setContent(content);
+//		ds.newblog(blog);
 	}
 
 }
