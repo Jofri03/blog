@@ -10,10 +10,12 @@
 </head>
 <body>
 	<h1>Blogs</h1>
-	<c:forEach var="blog" items="${blogData}">
-		<div>
-			<p><a href="&{blog.url}">"${blog.name}"</a></p>
-		</div>
-	</c:forEach>
+	<ul>
+		<c:forEach var="blog" items="${blogData}">
+			<li>
+				<p><a href="&{blog.url}">"${blog.name}"</a></p>
+			</li>
+		</c:forEach>
+	</ul>
 </body>
 </html>
