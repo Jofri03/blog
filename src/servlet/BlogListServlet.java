@@ -34,7 +34,7 @@ public class BlogListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// Collect blogs.
+		// Collect blogs. (Matthew 3/19)
 		DataService ds = new DataService();
 		List<Blog> blogs = null;
 		try {
@@ -44,7 +44,7 @@ public class BlogListServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		// Send blogs to the blog list page.
+		// Send blogs to the blog list page. (Matthew 3/19)
 		request.setAttribute("blogData", blogs);
 		RequestDispatcher rd = request.getRequestDispatcher("BlogList.jsp");
 		rd.forward(request, response);

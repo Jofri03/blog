@@ -9,6 +9,9 @@
 <title>Blog List</title>
 </head>
 <body>
+
+<!-- Body of blog list page. (Matthew 3/19) -->
+
 	<h1>Blogs</h1>
 	<ul>
 		<c:forEach var="blog" items="${blogData}">
