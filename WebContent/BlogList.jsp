@@ -13,7 +13,7 @@
 	<ul>
 		<c:forEach var="blog" items="${blogData}">
 			<li>
-				<p><a href="&{blog.url}">"${blog.name}"</a></p>
+				<p><a href="${blog.url}">"${blog.name}"</a></p>
 			</li>
 		</c:forEach>
 	</ul>
