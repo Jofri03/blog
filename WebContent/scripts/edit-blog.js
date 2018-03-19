@@ -10,7 +10,7 @@ $(function(){
     	"content": $("#content").val() }
     )				    	
 	.done(function(json) {
-    	alert("Edit blog success!");
+//    	alert("Edit blog success!");
     })
     .fail(function() {
     	alert("Edit blog failed!")

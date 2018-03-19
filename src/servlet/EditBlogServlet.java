@@ -70,14 +70,22 @@ public class EditBlogServlet extends HttpServlet {
 		DataService ds = new DataService();
 		try {
 			boolean success = ds.modify(blog);
-			System.out.println(success);
-			response.setContentType("application/json");
-			response.setCharacterEncoding("UTF-8");
-			Map<String, Boolean> map = new HashMap<>();
-			map.put("result", success);
-			System.out.println(map);
-			Gson gson = new Gson();
-			response.getWriter().write(gson.toJson(map));
+//			System.out.println(success);
+//			response.setContentType("application/json");
+//			response.setCharacterEncoding("UTF-8");
+//			Map<String, Boolean> map = new HashMap<>();
+//			map.put("result", success);
+//			System.out.println(map);
+//			Gson gson = new Gson();
+//			response.getWriter().write(gson.toJson(map));
+			
+//			request.setAttribute("blog", blog);
+//			request.getRequestDispatcher("EditBlogSuccess.jsp").forward(request, response);
+			
+			HttpSession session = request.getSession();
+			session.setAttribute("blog", blog);
+			response.sendRedirect("EditBlogSuccess.jsp");
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
