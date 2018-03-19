@@ -9,10 +9,10 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
-	<classpathentry kind="lib" path="C:/Users/Matthew/Desktop/WAP BLOG/blog/lib/gson-2.8.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Matthew/Desktop/WAP BLOG/blog/lib/javax.servlet-api.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Matthew/Desktop/WAP BLOG/blog/lib/json-simple-1.1.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Matthew/Desktop/WAP BLOG/blog/lib/mysql-connector-java-5.1.46-bin.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Matthew/Desktop/WAP BLOG/blog/lib/jstl-1.2.jar"/>
+	<classpathentry kind="lib" path="lib/gson-2.8.2.jar"/>
+	<classpathentry kind="lib" path="lib/javax.servlet-api.jar"/>
+	<classpathentry kind="lib" path="lib/json-simple-1.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.46-bin.jar"/>
+	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.46.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
