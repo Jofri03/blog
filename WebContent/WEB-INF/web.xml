@@ -27,6 +27,15 @@
   	<url-pattern>/edit</url-pattern>
   </servlet-mapping>
   
+  
+    <servlet>
+  	<servlet-name>EditBlogSuccess</servlet-name>
+  	<servlet-class>servlet.EditBlogSuccessServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>EditBlogSuccess</servlet-name>
+  	<url-pattern>/edit-blog-success</url-pattern>
+  </servlet-mapping>
   <servlet>
   	<servlet-name>BlogList</servlet-name>
   	<servlet-class>servlet.BlogListServlet</servlet-class>
