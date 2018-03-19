@@ -26,7 +26,7 @@ public class NewBlogServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String title = request.getParameter("title");
+//		String title = request.getParameter("title");
 //		String content = request.getParameter("content");
 //		DataService ds = new DataService();
 //		Blog blog = new Blog();
