@@ -11,6 +11,6 @@
 	<h3>You can heck this blog by clicking this link:</h3>
 	<a href="view?blogid=${ blog.id }">${ blog.title }</a>
 	<h3>Or you can go back to the blog list:</h3>
-	<a href="list"></a>
+	<a href="list">View the blog list</a>
 </body>
 </html>

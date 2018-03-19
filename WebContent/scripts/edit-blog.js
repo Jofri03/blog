@@ -10,7 +10,8 @@ $(function(){
     	"content": $("#content").val() }
     )				    	
 	.done(function(json) {
-//    	alert("Edit blog success!");
+    	alert("Edit blog success!");
+    	location.href = "edit-blog-success?blogid=" + $("#blogid").val();
     })
     .fail(function() {
     	alert("Edit blog failed!")
