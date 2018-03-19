@@ -36,5 +36,13 @@
   	<url-pattern>/list</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>ViewBlogServlet</servlet-name>
+  	<servlet-class>servlet.ViewBlogServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ViewBlogServlet</servlet-name>
+  	<url-pattern>/view</url-pattern>
+  </servlet-mapping>
   
 </web-app>
