@@ -10,6 +10,7 @@ $(function(){
     $.post("NewServlet", {"title": title, "content": content}).
     done(function(json) {
     	alert("Add new blog success!");
+    	location.href = "edit-blog-success?blogid=" + json['newBlogId'];
     })
     .fail(function() {
     	alert("Add nwe blog failed!")

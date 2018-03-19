@@ -68,8 +68,8 @@ class DataServiceTest {
 			blog.setTitle("This is my Second Blog");
 			blog.setContent("Type here to search");
 			blog.setUserId(1001);
-			boolean success = ds.add(blog);
-			assertEquals(success, true);
+			int blogId = ds.add(blog);
+			assertEquals(blogId > 0, true);
 			assertEquals(ds.getAll().size(), size + 1);
 
 		} catch (SQLException e) {

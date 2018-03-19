@@ -65,15 +65,17 @@ public class DataService {
     }
 
     // Add a new blog.
-    public boolean add(Blog blog) throws SQLException {
+    public int add(Blog blog) throws SQLException {
       String SQL = "INSERT INTO blog(title, content, user_id) VALUES(?, ?, ?)";
-      PreparedStatement pstmt = conn.prepareStatement(SQL);
+      PreparedStatement pstmt = conn.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
       pstmt.setString(1, blog.getTitle());
       pstmt.setString(2, blog.getContent());
       pstmt.setInt(3, blog.getUserId());
       System.out.println(pstmt);
-      int count = pstmt.executeUpdate();
-      return count > 0;
+      pstmt.executeUpdate();
+      ResultSet keys = pstmt.getGeneratedKeys();    
+      keys.next();  
+      return keys.getInt(1);
     }
 
     // Delete a blog by id.

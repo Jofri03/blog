@@ -56,12 +56,12 @@ public class NewServlet extends HttpServlet {
 		blog.setTitle(title);
 		blog.setContent(content);
 		try {
-			boolean success = ds.add(blog);
-			System.out.println(success);
+			int newBlogId = ds.add(blog);
+			System.out.println(newBlogId);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
-			Map<String, String> map = new HashMap<>();
-			map.put("result", success ? "yes": "no");
+			Map<String, Integer> map = new HashMap<>();
+			map.put("newBlogId", newBlogId);
 			System.out.println(map);
 			Gson gson = new Gson();
 			out.write(gson.toJson(map));

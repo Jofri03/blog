@@ -54,4 +54,13 @@
   	<url-pattern>/view</url-pattern>
   </servlet-mapping>
   
+    <servlet>
+  	<servlet-name>DeleteBlogServlet</servlet-name>
+  	<servlet-class>servlet.DeleteBlogServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>DeleteBlogServlet</servlet-name>
+  	<url-pattern>/delete</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
