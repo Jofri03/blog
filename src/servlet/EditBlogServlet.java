@@ -78,6 +78,10 @@ public class EditBlogServlet extends HttpServlet {
 			System.out.println(map);
 			Gson gson = new Gson();
 			response.getWriter().write(gson.toJson(map));
+//			request.setAttribute("blog", blog);
+//			request.getRequestDispatcher("EditBlogSuccess.jsp").forward(request, response);
+			
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
