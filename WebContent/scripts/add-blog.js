@@ -1,18 +1,18 @@
 "use strict";
 
 $(function(){
-  console.log('hi2');
+  console.log('hi4');
 
   $("#submit").click(function() {
     var title = $("#title").val();
     var content = $("#content").val();
-    console.log("new blog servlet");
+    console.log("NewServlet");
     $.post("NewServlet", {"title": title, "content": content}).
     done(function(json) {
-    	console.log(json);
+    	alert("Add new blog success!");
     })
     .fail(function() {
-
+    	alert("Add nwe blog failed!")
     });
   });
 });

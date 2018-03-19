@@ -9,4 +9,21 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
+  <servlet>
+  	<servlet-name>NewBlogServlet</servlet-name>
+  	<servlet-class>servlet.NewServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>NewBlogServlet</servlet-name>
+  	<url-pattern>/new</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<servlet-name>EditBlog</servlet-name>
+  	<servlet-class>servlet.EditBlogServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>EditBlog</servlet-name>
+  	<url-pattern>/edit</url-pattern>
+  </servlet-mapping>
 </web-app>

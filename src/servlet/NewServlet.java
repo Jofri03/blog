@@ -3,12 +3,18 @@ package servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.google.gson.Gson;
 
 import model.Blog;
 import service.DataService;
@@ -32,7 +38,13 @@ public class NewServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		request.getRequestDispatcher("new-blog.html").forward(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		
 		String title = request.getParameter("title");
@@ -45,22 +57,18 @@ public class NewServlet extends HttpServlet {
 		blog.setContent(content);
 		try {
 			boolean success = ds.add(blog);
+			System.out.println(success);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
-			out.print(String.format("{'success':'{0}'}", success));
-			out.flush();
+			Map<String, String> map = new HashMap<>();
+			map.put("result", success ? "yes": "no");
+			System.out.println(map);
+			Gson gson = new Gson();
+			out.write(gson.toJson(map));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }
