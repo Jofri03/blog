@@ -9,11 +9,16 @@
 <title>Blog List</title>
 </head>
 <body>
+
+<!-- Body of blog list page. (Matthew 3/19) -->
+
 	<h1>Blogs</h1>
-	<c:forEach var="blog" items="${blogData}">
-		<div>
-			<p><a href="&{blog.url}">"${blog.name}"</a></p>
-		</div>
-	</c:forEach>
+	<ul>
+		<c:forEach var="blog" items="${blogData}">
+			<li>
+				<p><a href="${blog.url}">"${blog.name}"</a></p>
+			</li>
+		</c:forEach>
+	</ul>
 </body>
 </html>
