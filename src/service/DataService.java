@@ -13,13 +13,8 @@ public class DataService {
     private Connection conn;
     public DataService() {
       try {
-<<<<<<< HEAD
         Class.forName("com.mysql.jdbc.Driver").newInstance();
         this.conn = DriverManager.getConnection("jdbc:mysql://45.77.144.61:3306/blogdb?useSSL=false", "cun", "123456");
-=======
-        Class.forName("com.mysql.jdbc.Driver");
-        this.conn = DriverManager.getConnection("jdbc:mysql://108.61.89.50:3306/blogdb?useSSL=false", "cun", "123456");
->>>>>>> master
       } catch (Exception ex) {
         System.out.println(ex);
       }
