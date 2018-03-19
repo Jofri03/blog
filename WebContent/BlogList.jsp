@@ -16,7 +16,8 @@
 	<ul>
 		<c:forEach var="blog" items="${blogData}">
 			<li>
-				<p><a href="${blog.url}">"${blog.name}"</a></p>
+				<a href="view?blogid=${blog.id}">"${blog.title}"</a>
+				<p>${ blog.content }</p>
 			</li>
 		</c:forEach>
 	</ul>
