@@ -1,11 +1,19 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import model.User;
+import service.UserService;
+import com.google.gson.*;
 
 /**
  * Servlet implementation class LoginServlet
@@ -22,12 +30,46 @@ public class LoginServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.getRequestDispatcher("login.html").forward(request, response);
+	}
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		boolean isRemember = Boolean.parseBoolean(request.getParameter("remember"));
+		System.out.println(email);
+		System.out.println(password);
+		System.out.println(isRemember);
+		
+		
+		User u = null;
+		UserService us = new UserService();
+		Map<String, Boolean> map = new HashMap<>();
+		map.put("result", false);
+		Gson gson = new Gson();
+		
+		
+		try {
+			u = us.login(email, password);
+			map.put("result", u != null);
+			System.out.println(gson.toJson(map));
+			response.getWriter().write(gson.toJson(map));
+			response.getWriter().flush();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println(gson.toJson(map));
+			response.getWriter().write(gson.toJson(map));
+			response.getWriter().flush();
+		}
+		
 	}
 
 }
