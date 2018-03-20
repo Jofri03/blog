@@ -7,9 +7,11 @@ import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.User;
 import service.UserService;
@@ -38,15 +40,13 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+//		response.sendRedirect("http://www.google.com");
 		
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		boolean isRemember = Boolean.parseBoolean(request.getParameter("remember"));
-		System.out.println(email);
-		System.out.println(password);
-		System.out.println(isRemember);
 		
 		
 		User u = null;
@@ -58,6 +58,13 @@ public class LoginServlet extends HttpServlet {
 		
 		try {
 			u = us.login(email, password);
+			
+			if (u != null) {
+				request.getServletContext().setAttribute("userid", u.getId());
+				System.out.println("set userid: " + u.getId());
+//				response.sendRedirect("list");
+//				return;
+			}
 			map.put("result", u != null);
 			System.out.println(gson.toJson(map));
 			response.getWriter().write(gson.toJson(map));

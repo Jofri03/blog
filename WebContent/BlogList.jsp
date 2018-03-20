@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
 <title>Blog List</title>
 </head>
 <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
@@ -27,8 +28,9 @@
   		
 <header class="navbar">
   <section class="navbar-section">
-    <a href="#" class="navbar-brand mr-2">Private Blog</a>
+    <a href="list" class="navbar-brand mr-2"><h3>Private Blog</h3></a>
     <a href="new" class="btn btn-link">New</a>
+    <a href="logout" class="btn btn-link">Logout</a>
   </section>
   <section class="navbar-section">
     <div class="input-group input-inline">
@@ -43,7 +45,7 @@
 		<c:forEach var="blog" items="${blogData}">
 			<li>
 			
-				<a href="view?blogid=${blog.id}"><h3 id="title">${blog.title}</h3></a>
+				<a href="view?blogid=${blog.id}"><h4 id="title">${blog.title}</h4></a>
 				<span class="text-success">${ blog.createdDate }</span>
 				<p>${ blog.content }</p>
 			</li>

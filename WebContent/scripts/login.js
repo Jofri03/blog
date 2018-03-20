@@ -5,10 +5,12 @@ $(function () {
 		
 		$.post("login", {"email": $("#email").val(), "password": $("#password").val(), "remember": $("#remember").is(':checked') })
 		.done(function (data) {
-			debugger;
+//			debugger;
 			if (data.result) {
-				alert("login success!");
-				location.href = "list";
+				alert("Login success!");
+				 location.href = 'list';
+
+
 			} else {
 				alert("username or password is incorrect!");
 			}
@@ -18,5 +20,5 @@ $(function () {
 			alert('fail');
 			alert(JSON.stringify(json));
 		});
-	});
+	}); // click
 });

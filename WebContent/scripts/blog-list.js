@@ -1,12 +1,9 @@
 $(function () {
-	function truncateText(selector, maxLength) {
-	    var element = document.querySelector(selector),
-	        truncated = element.innerText;
-	    if (truncated.length > maxLength) {
-	        truncated = truncated.substr(0,maxLength) + '...';
-	    }
-	    return truncated;
-	}
 	//You can then call the function with something like what i have below.
-	$('p').text(truncateText('p', 400));
+	$.each($('p'), function() {
+		var maxLength = 500;
+	    if (this.innerText.length > maxLength) {
+	    	this.innerText = this.innerText.substr(0, maxLength) + '...';
+	    }
+	});
 });

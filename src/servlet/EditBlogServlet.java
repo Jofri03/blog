@@ -34,30 +34,28 @@ public class EditBlogServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	
-    	String blogId = request.getParameter("blogid");
-    	DataService ds = new DataService();
-    	try {
-			Blog blog = ds.getOne(Integer.parseInt(blogId));
-			if (blog != null) {
-				HttpSession  session = request.getSession();
-				session.setAttribute("blog", blog);
-//				response.sendRedirect("EditBlog.jsp");
-				request.getRequestDispatcher("EditBlog.jsp").forward(request, response);
-			}
-			
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
+    		if (request.getServletContext().getAttribute("userid") == null) {
+			response.sendRedirect("login");
+			return;
 		}
+	    	String blogId = request.getParameter("blogid");
+	    	DataService ds = new DataService();
+	    	try {
+				Blog blog = ds.getOne(Integer.parseInt(blogId));
+				if (blog != null) {
+					HttpSession  session = request.getSession();
+					session.setAttribute("blog", blog);
+	//				response.sendRedirect("EditBlog.jsp");
+					request.getRequestDispatcher("EditBlog.jsp").forward(request, response);
+				}
+				
+			} catch (NumberFormatException e) {
+				e.printStackTrace();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
     }
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println(request.getParameter("blogid"));
-		System.out.println(request.getParameter("title"));
-		System.out.println(request.getParameter("content"));
-		
-		
 		int blogId = Integer.parseInt(request.getParameter("blogid"));
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
