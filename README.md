@@ -16,9 +16,9 @@ We are creating a blog website for our final project. This website will allow pe
 - Deleting Blogs (Matthew)
 - Database (Cun)
 - Page Appearance and Layout
-  a. Login
-  b. Blog list
-  c. Blog view
+    - Login
+    - Blog list
+    - Blog view
 - Account Registry (if we have time)
 
 ### Style
@@ -31,8 +31,8 @@ The website will have a database that keeps track of blogging accounts and user 
 
 ### Online Hosting
 - Online cloud: Vultr [https://www.vultr.com/](https://www.vultr.com/)
-OS: Ubuntu 17.10 x64
-CPU: 1 vCore
-RAM: 512 MB
-Storage: 20 GB SSD
+    - OS: Ubuntu 17.10 x64
+    - CPU: 1 vCore
+    - RAM: 512 MB
+    - Storage: 20 GB SSD
 - Docker version 17.12.1-ce, build 7390fc6
