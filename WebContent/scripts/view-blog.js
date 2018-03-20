@@ -16,6 +16,7 @@ $(function () {
 		$.get("delete", {"blogId": blogId})
 		.done(function() {
 			alert("delete blog success!");
+			location.href = 'list';
 		})
 		.fail(function() {
 			alert("delete blog failed!");

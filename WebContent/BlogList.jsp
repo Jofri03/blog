@@ -12,8 +12,10 @@
 <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
 <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
 <link rel="stylesheet" href="css/blog-list.css">
+<link rel="stylesheet" href="css/index.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+<script type="text/javascript" src="scripts/basic.js"></script>
 <script type="text/javascript" src="scripts/blog-list.js"></script>
 
 <body>
@@ -41,8 +43,8 @@
 		<c:forEach var="blog" items="${blogData}">
 			<li>
 			
-				<a href="view?blogid=${blog.id}"><span class="text-primary">${blog.title}</span></a>
-				<span class="text-primary">${blog.title}</span>
+				<a href="view?blogid=${blog.id}"><h3 id="title">${blog.title}</h3></a>
+				<span class="text-success">${ blog.createdDate }</span>
 				<p>${ blog.content }</p>
 			</li>
 		</c:forEach>
@@ -50,5 +52,7 @@
 	</div>
 	</div>
 </div>
+<div class="modal"></div>
 </body>
 </html>
+
