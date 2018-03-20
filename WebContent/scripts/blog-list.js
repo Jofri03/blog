@@ -8,5 +8,5 @@ $(function () {
 	    return truncated;
 	}
 	//You can then call the function with something like what i have below.
-	$('p').text(truncateText('p', 200));
+	$('p').text(truncateText('p', 400));
 });

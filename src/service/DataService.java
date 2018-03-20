@@ -31,9 +31,11 @@ public class DataService {
         int blogId = rset.getInt("id");
         String title = rset.getString("title");
         String content = rset.getString("content");
+        Date createdDate = rset.getDate("create_time");
         temp.setId(blogId);
         temp.setTitle(title);
         temp.setContent(content);
+        temp.setCreatedDate(createdDate);
         blogs.add(temp);
       }
       return blogs;
