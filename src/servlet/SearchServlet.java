@@ -20,7 +20,7 @@ import service.DataService;
 @WebServlet("/SearchServlet")
 public class SearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -33,11 +33,11 @@ public class SearchServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		if (request.getServletContext().getAttribute("userid") == null) {
-			response.sendRedirect("login");
-			return;
-		}
+
+		// if (request.getServletContext().getAttribute("user") == null) {
+		// 	response.sendRedirect("login");
+		// 	return;
+		// }
 		String keyword = request.getParameter("keyword");
 		DataService ds = new DataService();
 		List<Blog> blogs = null;
@@ -46,7 +46,7 @@ public class SearchServlet extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		request.setAttribute("blogData", blogs);
 		RequestDispatcher rd = request.getRequestDispatcher("SearchResult.jsp");
 		rd.forward(request, response);

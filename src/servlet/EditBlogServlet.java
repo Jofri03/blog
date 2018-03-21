@@ -34,10 +34,10 @@ public class EditBlogServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    		if (request.getServletContext().getAttribute("userid") == null) {
-			response.sendRedirect("login");
-			return;
-		}
+    // 		if (request.getServletContext().getAttribute("user") == null) {
+		// 	response.sendRedirect("login");
+		// 	return;
+		// }
 	    	String blogId = request.getParameter("blogid");
 	    	DataService ds = new DataService();
 	    	try {
@@ -48,7 +48,7 @@ public class EditBlogServlet extends HttpServlet {
 	//				response.sendRedirect("EditBlog.jsp");
 					request.getRequestDispatcher("EditBlog.jsp").forward(request, response);
 				}
-				
+
 			} catch (NumberFormatException e) {
 				e.printStackTrace();
 			} catch (SQLException e) {
@@ -59,12 +59,12 @@ public class EditBlogServlet extends HttpServlet {
 		int blogId = Integer.parseInt(request.getParameter("blogid"));
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
-		
+
 		Blog blog = new Blog();
 		blog.setId(blogId);
 		blog.setTitle(title);
 		blog.setContent(content);
-		
+
 		DataService ds = new DataService();
 		try {
 			boolean success = ds.modify(blog);
@@ -78,13 +78,13 @@ public class EditBlogServlet extends HttpServlet {
 			response.getWriter().write(gson.toJson(map));
 //			request.setAttribute("blog", blog);
 //			request.getRequestDispatcher("EditBlogSuccess.jsp").forward(request, response);
-			
-			
+
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		
+
+
 	}
 
 }

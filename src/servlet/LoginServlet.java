@@ -41,42 +41,45 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		response.sendRedirect("http://www.google.com");
-		
+
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		boolean isRemember = Boolean.parseBoolean(request.getParameter("remember"));
-		
-		
+
+
 		User u = null;
 		UserService us = new UserService();
 		Map<String, Boolean> map = new HashMap<>();
 		map.put("result", false);
 		Gson gson = new Gson();
-		
-		
+
+
 		try {
 			u = us.login(email, password);
-			
+
 			if (u != null) {
-				request.getServletContext().setAttribute("userid", u.getId());
-				System.out.println("set userid: " + u.getId());
-//				response.sendRedirect("list");
-//				return;
+				request.getServletContext().setAttribute("user", u);
+
+				if (isRemember) {
+					Cookie cookie = new Cookie("user",String.valueOf(u.getId()));
+					cookie.setMaxAge(60*60*24*30); // one month
+					response.addCookie(cookie);
+				}
 			}
 			map.put("result", u != null);
 			System.out.println(gson.toJson(map));
 			response.getWriter().write(gson.toJson(map));
 			response.getWriter().flush();
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println(gson.toJson(map));
 			response.getWriter().write(gson.toJson(map));
 			response.getWriter().flush();
 		}
-		
+
 	}
 
 }

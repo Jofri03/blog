@@ -30,10 +30,10 @@ public class DeleteBlogServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if (request.getServletContext().getAttribute("userid") == null) {
-			response.sendRedirect("login");
-			return;
-		}
+		// if (request.getServletContext().getAttribute("user") == null) {
+		// 	response.sendRedirect("login");
+		// 	return;
+		// }
 		int blogId = Integer.parseInt(request.getParameter("blogId"));
 		DataService ds = new DataService();
 		try {

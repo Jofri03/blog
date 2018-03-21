@@ -34,10 +34,10 @@ public class BlogListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if (request.getServletContext().getAttribute("userid") == null) {
-			response.sendRedirect("login");
-			return;
-		}
+		// if (request.getServletContext().getAttribute("user") == null) {
+		// 	response.sendRedirect("login");
+		// 	return;
+		// }
 		// Collect blogs. (Matthew 3/19)
 		DataService ds = new DataService();
 		List<Blog> blogs = null;
@@ -47,12 +47,12 @@ public class BlogListServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		// Send blogs to the blog list page. (Matthew 3/19)
 		request.setAttribute("blogData", blogs);
 		RequestDispatcher rd = request.getRequestDispatcher("BlogList.jsp");
 		rd.forward(request, response);
-		
+
 	}
 
 }

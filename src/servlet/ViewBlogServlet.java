@@ -18,7 +18,7 @@ import service.DataService;
 @WebServlet("/ViewBlogServlet")
 public class ViewBlogServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -31,16 +31,16 @@ public class ViewBlogServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if (request.getServletContext().getAttribute("userid") == null) {
-			response.sendRedirect("login");
-			return;
-		}
+		// if (request.getServletContext().getAttribute("user") == null) {
+		// 	response.sendRedirect("login");
+		// 	return;
+		// }
 		String blogIdStr = request.getParameter("blogid");
 		if (!blogIdStr.matches("\\d+")) {
 			response.getWriter().append("Error blog id: ").append(request.getContextPath());
 			return;
 		}
-		
+
 		int blogId = Integer.parseInt(blogIdStr);
 		DataService ds = new DataService();
 		try {
@@ -51,7 +51,7 @@ public class ViewBlogServlet extends HttpServlet {
 			}
 			request.setAttribute("blog", blog);
 			request.getRequestDispatcher("ViewBlog.jsp").forward(request, response);
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
