@@ -2,6 +2,8 @@ package servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -35,16 +37,17 @@ public class SearchServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		// if (request.getServletContext().getAttribute("user") == null) {
-		// response.sendRedirect("login");
-		// return;
-		// }
 		String keyword = request.getParameter("keyword");
 		DataService ds = new DataService();
 		List<Blog> blogs = null;
 		try {
 			blogs = ds.search(keyword);
+			Collections.sort(blogs, new Comparator<Blog>() {
+				@Override
+				public int compare(Blog o1, Blog o2) {
+					return o2.getId() - o1.getId();
+				}
+			});
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

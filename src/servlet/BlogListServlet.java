@@ -2,6 +2,8 @@ package servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -10,7 +12,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import model.Blog;
 import service.DataService;
@@ -36,17 +37,17 @@ public class BlogListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// if (request.getServletContext().getAttribute("user") == null) {
-		// response.sendRedirect("login");
-		// return;
-		// }
-		// Collect blogs. (Matthew 3/19)
 		DataService ds = new DataService();
 		List<Blog> blogs = null;
 		try {
 			blogs = ds.getAll();
+			Collections.sort(blogs, new Comparator<Blog>() {
+				@Override
+				public int compare(Blog o1, Blog o2) {
+					return o2.getId() - o1.getId();
+				}
+			});
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
