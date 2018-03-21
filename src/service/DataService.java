@@ -46,7 +46,7 @@ public class DataService {
 			int blogId = rset.getInt("id");
 			String title = rset.getString("title");
 			String content = rset.getString("content");
-			Date createdDate = rset.getDate("create_time");
+			Date createdDate =new Date(rset.getTimestamp("create_time").getTime());
 			temp.setId(blogId);
 			temp.setTitle(title);
 			temp.setContent(content);
@@ -72,11 +72,15 @@ public class DataService {
 		int blogId = rset.getInt("id");
 		String title = rset.getString("title");
 		String content = rset.getString("content");
-		Date createdDate = rset.getDate("create_time");
+//		Date createdDate = rset.getDate("create_time");
+		Date createdDate =new Date(rset.getTimestamp("create_time").getTime());
+		System.out.println("getOne: " + createdDate);
+		int userId = rset.getInt("user_id");
 		blog.setId(blogId);
 		blog.setTitle(title);
 		blog.setContent(content);
 		blog.setCreatedDate(createdDate);
+		blog.setUserId(userId);
 		conn.close();
 		return blog;
 	}

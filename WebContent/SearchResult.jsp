@@ -4,6 +4,8 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="ct" uri="WEB-INF/addedDateTime.tld"%>
+
 
 <html>
 <head>
@@ -23,6 +25,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <script type="text/javascript" src="scripts/basic.js"></script>
+<script type="text/javascript" src="scripts/blog-list.js"></script>
 
 <body>
 
@@ -31,7 +34,7 @@
 			<div class="column col-6 col-gapless col-mx-auto col-ml-auto">
 
 				<header class="navbar"> <section class="navbar-section">
-				<a href="list" class="navbar-brand mr-2"><h3>Private Blog</h3></a> <a
+				<a href="list" class="navbar-brand mr-2"><h3>Blog</h3></a> <a
 					href="#" class="btn btn-link">Result for keyword: "<c:out
 						value="${param.keyword}"></c:out>"
 				</a> </section> <section class="navbar-section">
@@ -54,7 +57,8 @@
 				<ul>
 					<c:forEach var="blog" items="${blogData}">
 						<li><a href="view?blogid=${blog.id}"><h4 id="title">${blog.title}</h4></a>
-							<span class="text-success">${ blog.createdDate }</span>
+							<%-- <span class="text-success">${ blog.createdDate }</span> --%>
+							<ct:AddedDateTime date="${ blog.createdDate }" />
 							<p>${ blog.content }</p></li>
 					</c:forEach>
 				</ul>

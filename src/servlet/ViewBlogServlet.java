@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Blog;
+import model.User;
 import service.DataService;
 
 /**
@@ -52,6 +53,10 @@ public class ViewBlogServlet extends HttpServlet {
 				return;
 			}
 			request.setAttribute("blog", blog);
+			
+			Object user = request.getSession().getAttribute("user");
+			boolean isOwner = user != null && ((User)user).getId() == blog.getUserId();
+			request.setAttribute("isOwner", isOwner);
 			request.getRequestDispatcher("ViewBlog.jsp").forward(request, response);
 
 		} catch (SQLException e) {

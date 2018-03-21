@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Blog;
+import model.User;
 import service.DataService;
 
 /**
@@ -53,6 +54,12 @@ public class BlogListServlet extends HttpServlet {
 
 		// Send blogs to the blog list page. (Matthew 3/19)
 		request.setAttribute("blogData", blogs);
+		
+		User user = null;
+		if (request.getSession().getAttribute("user") == null) {
+			user = (User)request.getSession().getAttribute("user");
+		}
+		request.setAttribute("user", user);
 		RequestDispatcher rd = request.getRequestDispatcher("BlogList.jsp");
 		rd.forward(request, response);
 

@@ -30,7 +30,7 @@
 			<div class="column col-6 col-gapless col-mx-auto col-ml-auto">
 
 				<header class="navbar"> <section class="navbar-section">
-				<a href="list" class="navbar-brand mr-2"><h3>Private Blog</h3></a> <a
+				<a href="list" class="navbar-brand mr-2"><h3>Blog</h3></a> <a
 					class="btn btn-link">Edit</a> </section> </header>
 
 
