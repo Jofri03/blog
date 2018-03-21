@@ -38,22 +38,13 @@ public class LoginFilter implements Filter {
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		// TODO Auto-generated method stub
-		// place your code here
-		System.out.println("do filter");
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
-
-		
-		User user = null;
-		if (req.getServletContext().getAttribute("user") != null) {
-			user = (User) req.getServletContext().getAttribute("user");
-		}
-
-		if (user == null) {
+		System.out.println("LoginFilter.doFilter,  session[user]=" + (req.getSession().getAttribute("user")!=null));
+//		if (req.getServletContext().getAttribute("user") == null) {
+		if (req.getSession().getAttribute("user") == null) {
 			res.sendRedirect("login");
 		} else {
-			// pass the request along the filter chain
 			chain.doFilter(req, response);
 		}
 	}

@@ -47,7 +47,7 @@ public class LoginServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		boolean isRemember = Boolean.parseBoolean(request.getParameter("remember"));
-
+		System.out.println("isRemember" + isRemember);
 
 		User u = null;
 		UserService us = new UserService();
@@ -60,7 +60,8 @@ public class LoginServlet extends HttpServlet {
 			u = us.login(email, password);
 
 			if (u != null) {
-				request.getServletContext().setAttribute("user", u);
+//				request.getServletContext().setAttribute("user", u);
+				request.getSession().setAttribute("user", u);
 
 				if (isRemember) {
 					Cookie cookie = new Cookie("user",String.valueOf(u.getId()));

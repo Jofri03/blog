@@ -68,7 +68,6 @@ public class EditBlogServlet extends HttpServlet {
 		DataService ds = new DataService();
 		try {
 			boolean success = ds.modify(blog);
-			System.out.println(success);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
 			Map<String, Boolean> map = new HashMap<>();
