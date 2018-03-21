@@ -5,28 +5,29 @@
 <head>
 <meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Edit Blog Success</title>
+<title>Success</title>
  <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
 	<link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
 	<link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
 	<link rel="stylesheet" href="css/index.css">
 	<style>
-	h5 {
-	display: inline;
-	}
+		div.container>div>div {
+			text-align:center;
+		}
 	</style>
 	
   </head>
 <body>
   <div class="container">
-  		<div class="columns">
+  	<div class="columns">
   		<div class="column col-6 col-gapless col-mx-auto col-ml-auto">
-  		
-	<h5>Success!</h5></br></br>
-	<h5>You can check this blog by clicking this link:</h5>
-	<a href="view?blogid=${ blog.id }">${ blog.title }</a></br></br>
-	<h5>Or you can go back to the blog list:</h5>
-	<a href="list">View the blog list</a>
-	</div></div></div>
+			<h4 class="text-success">Congratulations! You have created a blog!</h4></br></br>
+			<span>You can check this blog by clicking this link:</span>
+			<a href="view?blogid=${ blog.id }">${ blog.title }</a></br>
+			<span>Or you can go back to the blog list:</span>
+			<a href="list">Blog list</a>
+		</div>
+	</div>
+</div>
 </body>
 </html>

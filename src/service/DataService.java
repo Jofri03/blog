@@ -125,4 +125,31 @@ public class DataService {
       conn.close();
       return true;
     }
+
+	public List<Blog> search(String keyword) throws SQLException {
+		// TODO Auto-generated method stub
+		String SQL = "SELECT * FROM blog WHERE title  LIKE ? OR content LIKE ?";
+	    Connection conn = getConn();
+	    PreparedStatement pstmt = conn.prepareStatement(SQL);
+	    pstmt.setString(1, "%" + keyword + "%");
+	    pstmt.setString(2, "%" + keyword + "%");
+	    System.out.println(pstmt);
+	    List<Blog> blogs = new ArrayList<>();
+	    ResultSet rset = pstmt.executeQuery();
+	    while (rset.next()) {
+	    		Blog temp = new Blog();
+	    		int blogId = rset.getInt("id");
+	    		String title = rset.getString("title");
+	    		String content = rset.getString("content");
+	    		Date createdDate = rset.getDate("create_time");
+	    		temp.setId(blogId);
+	    		temp.setTitle(title);
+	    		temp.setContent(content);
+	    		temp.setCreatedDate(createdDate);
+	    		blogs.add(temp);
+	    }
+	    conn.close();
+	    System.out.println("search: " + blogs.size());
+	    return blogs;  
+	}
 }

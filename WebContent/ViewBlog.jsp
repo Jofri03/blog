@@ -21,23 +21,25 @@
 <div class="container">
   		<div class="columns">
   		<div class="column col-6 col-gapless col-mx-auto col-ml-auto">
-  		
+
 <header class="navbar">
   <section class="navbar-section">
-    <a href="list" class="navbar-brand mr-2">Private Blog</a>
+    <a href="list" class="navbar-brand mr-2"><h3>Private Blog</h3></a>
     <a href="new" class="btn btn-link">New</a>
+    <a href="logout" class="btn btn-link">Logout</a>
+
   </section>
   <section class="navbar-section">
     <div class="input-group input-inline">
-      <input class="form-input" type="text" placeholder="search">
-      <button class="btn btn-primary input-group-btn">Search</button>
+      <input id="keyword" class="form-input" type="text" placeholder="search">
+      <button id="search" class="btn btn-primary input-group-btn">Search</button>
     </div>
   </section>
 </header>
 <input id="blog_id" type="hidden" value="${ blog.id }" />
 <a href="view?blogid=${blog.id}"><h3 id="title">${blog.title}</h3></a>
 				<span class="text-success">${ blog.createdDate }</span>
-				
+
 <p id="content">${ blog.content }</p>
 
 
@@ -47,6 +49,6 @@
 </div>
 
 </div></div></div>
-<div id="loading" class="loading loading-lg"></div>
+
 </body>
 </html>

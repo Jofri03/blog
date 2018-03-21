@@ -4,6 +4,7 @@ $(function(){
   console.log('hi2');
 
   $("#submit").click(function() {
+	  $(this).addClass("loading");
     $.post("EditBlogServlet", { 
     	"blogid": $("#blogid").val(),
     	"title": $("#title").val(),
@@ -14,6 +15,9 @@ $(function(){
     })
     .fail(function() {
     	alert("Edit blog failed!")
-    });
+    })
+    .always(function() {
+    		$(this).removeClass("loading");
+    })
   });
 });
