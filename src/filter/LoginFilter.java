@@ -20,12 +20,12 @@ import model.User;
 @WebFilter("/LoginFilter")
 public class LoginFilter implements Filter {
 
-    /**
-     * Default constructor. 
-     */
-    public LoginFilter() {
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * Default constructor.
+	 */
+	public LoginFilter() {
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see Filter#destroy()
@@ -37,11 +37,12 @@ public class LoginFilter implements Filter {
 	/**
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+			throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
-		System.out.println("LoginFilter.doFilter,  session[user]=" + (req.getSession().getAttribute("user")!=null));
-//		if (req.getServletContext().getAttribute("user") == null) {
+		System.out.println("LoginFilter.doFilter,  session[user]=" + (req.getSession().getAttribute("user") != null));
+		// if (req.getServletContext().getAttribute("user") == null) {
 		if (req.getSession().getAttribute("user") == null) {
 			res.sendRedirect("login");
 		} else {

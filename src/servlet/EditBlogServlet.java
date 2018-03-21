@@ -18,44 +18,46 @@ import model.Blog;
 import service.DataService;
 
 /**
- * Servlet implementation class EditBlogServlet
- * Author: Cun Yang
+ * Servlet implementation class EditBlogServlet Author: Cun Yang
  */
 @WebServlet("/EditBlogServlet")
 public class EditBlogServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public EditBlogServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public EditBlogServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    // 		if (request.getServletContext().getAttribute("user") == null) {
-		// 	response.sendRedirect("login");
-		// 	return;
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// if (request.getServletContext().getAttribute("user") == null) {
+		// response.sendRedirect("login");
+		// return;
 		// }
-	    	String blogId = request.getParameter("blogid");
-	    	DataService ds = new DataService();
-	    	try {
-				Blog blog = ds.getOne(Integer.parseInt(blogId));
-				if (blog != null) {
-					HttpSession  session = request.getSession();
-					session.setAttribute("blog", blog);
-	//				response.sendRedirect("EditBlog.jsp");
-					request.getRequestDispatcher("EditBlog.jsp").forward(request, response);
-				}
-
-			} catch (NumberFormatException e) {
-				e.printStackTrace();
-			} catch (SQLException e) {
-				e.printStackTrace();
+		String blogId = request.getParameter("blogid");
+		DataService ds = new DataService();
+		try {
+			Blog blog = ds.getOne(Integer.parseInt(blogId));
+			if (blog != null) {
+				HttpSession session = request.getSession();
+				session.setAttribute("blog", blog);
+				// response.sendRedirect("EditBlog.jsp");
+				request.getRequestDispatcher("EditBlog.jsp").forward(request, response);
 			}
-    }
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		int blogId = Integer.parseInt(request.getParameter("blogid"));
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
@@ -75,14 +77,13 @@ public class EditBlogServlet extends HttpServlet {
 			System.out.println(map);
 			Gson gson = new Gson();
 			response.getWriter().write(gson.toJson(map));
-//			request.setAttribute("blog", blog);
-//			request.getRequestDispatcher("EditBlogSuccess.jsp").forward(request, response);
-
+			// request.setAttribute("blog", blog);
+			// request.getRequestDispatcher("EditBlogSuccess.jsp").forward(request,
+			// response);
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
 
 	}
 

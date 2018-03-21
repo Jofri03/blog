@@ -24,23 +24,27 @@ import com.google.gson.*;
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public LoginServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public LoginServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.getRequestDispatcher("login.html").forward(request, response);
 	}
+
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-//		response.sendRedirect("http://www.google.com");
+		// response.sendRedirect("http://www.google.com");
 
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
@@ -55,17 +59,16 @@ public class LoginServlet extends HttpServlet {
 		map.put("result", false);
 		Gson gson = new Gson();
 
-
 		try {
 			u = us.login(email, password);
 
 			if (u != null) {
-//				request.getServletContext().setAttribute("user", u);
+				// request.getServletContext().setAttribute("user", u);
 				request.getSession().setAttribute("user", u);
 
 				if (isRemember) {
-					Cookie cookie = new Cookie("user",String.valueOf(u.getId()));
-					cookie.setMaxAge(60*60*24*30); // one month
+					Cookie cookie = new Cookie("user", String.valueOf(u.getId()));
+					cookie.setMaxAge(60 * 60 * 24 * 30); // one month
 					response.addCookie(cookie);
 				}
 			}
