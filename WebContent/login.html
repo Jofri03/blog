@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<title>Login</title>
+</head>
+<link rel="stylesheet"
+	href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+<link rel="stylesheet"
+	href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+<link rel="stylesheet"
+	href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+<link rel="stylesheet" href="css/index.css">
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="scripts/login.js"></script>
+<script type="text/javascript" src="scripts/basic.js"></script>
+
+</head>
+<body>
+	<div class="container">
+		<div class="columns">
+			<div class="column col-3 col-gapless col-mx-auto col-ml-auto">
+
+				<div class="column">
+					<form>
+						<div class="form-group">
+							<label class="form-label" for="input-example-1">Email</label> <input
+								id="email" class="form-input" type="text" id="input-example-1"
+								placeholder="Email" value="cyang@mum.edu">
+						</div>
+						<div class="form-group">
+							<label class="form-label" for="input-example-2">Password</label>
+							<input id="password" class="form-input" type="password"
+								id="input-example-2" placeholder="Password" value="123456">
+						</div>
+						<div class="form-group">
+							<label class="form-checkbox"> <input id="remember"
+								type="checkbox" checked="checked"> <i class="form-icon"></i>
+								Remember me
+							</label>
+						</div>
+						<div class="form-group">
+							<button id="signin" class="btn btn-primary">Sign in</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<span class="label" style="position: fixed; bottom:0; right:0">version: 1.0.1</span>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<taglib xmlns="http://java.sun.com/xml/ns/javaee"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd" version="2.1">
+	<tlib-version>1.0</tlib-version>
+	<short-name>Added Date Time</short-name>
+	<tag>
+		<name>AddedDateTime</name>
+		<tag-class>ct.AddedDateTime</tag-class>
+		<body-content>empty</body-content>
+		
+		<attribute>
+			<name>date</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+</taglib>

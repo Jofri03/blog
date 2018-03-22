@@ -14,20 +14,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Blog;
-import model.User;
 import service.DataService;
 
 /**
- * Servlet implementation class BlogListServlet
+ * Servlet implementation class SearchServlet
  */
-@WebServlet("/BlogListServlet")
-public class BlogListServlet extends HttpServlet {
+@WebServlet("/SearchServlet")
+public class SearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public BlogListServlet() {
+	public SearchServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -38,10 +37,11 @@ public class BlogListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String keyword = request.getParameter("keyword");
 		DataService ds = new DataService();
 		List<Blog> blogs = null;
 		try {
-			blogs = ds.getAll();
+			blogs = ds.search(keyword);
 			Collections.sort(blogs, new Comparator<Blog>() {
 				@Override
 				public int compare(Blog o1, Blog o2) {
@@ -52,17 +52,19 @@ public class BlogListServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		// Send blogs to the blog list page. (Matthew 3/19)
 		request.setAttribute("blogData", blogs);
-		
-		User user = null;
-		if (request.getSession().getAttribute("user") == null) {
-			user = (User)request.getSession().getAttribute("user");
-		}
-		request.setAttribute("user", user);
-		RequestDispatcher rd = request.getRequestDispatcher("BlogList.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("SearchResult.jsp");
 		rd.forward(request, response);
+	}
 
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

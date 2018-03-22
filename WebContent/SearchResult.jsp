@@ -3,13 +3,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="ct" uri="WEB-INF/addedDateTime.tld"%>
+
 
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
-<title>Blog List</title>
+<title>Search Result</title>
 </head>
 <link rel="stylesheet"
 	href="https://unpkg.com/spectre.css/dist/spectre.min.css">
@@ -27,22 +29,15 @@
 
 <body>
 
-	<!-- Body of blog list page. (Matthew 3/19) -->
 	<div class="container">
 		<div class="columns">
 			<div class="column col-6 col-gapless col-mx-auto col-ml-auto">
 
 				<header class="navbar"> <section class="navbar-section">
-
-				<a href="list" class="navbar-brand mr-2"><h3>Blog</h3></a> <c:choose>
-					<c:when test="${ user != null }">
-						<a href="new" class="btn btn-link">New</a>
-						<a href="logout" class="btn btn-link">Logout</a>
-					</c:when>
-					<c:otherwise>
-						<a href="login" class="btn btn-link">Login</a>
-					</c:otherwise>
-				</c:choose> </section> <section class="navbar-section">
+				<a href="list" class="navbar-brand mr-2"><h3>Blog</h3></a> <a
+					href="#" class="btn btn-link">Result for keyword: "<c:out
+						value="${param.keyword}"></c:out>"
+				</a> </section> <section class="navbar-section">
 				<div class="input-group input-inline">
 					<input id="keyword" class="form-input" type="text"
 						placeholder="search">
@@ -50,6 +45,14 @@
 				</div>
 				</section> </header>
 
+				<c:if test="${empty blogData}">
+					<h4 class="text-error">Sorry, no blogs matched your search.
+						Please try agian.</h4>
+				</c:if>
+
+				<%--   <c:if test="${fn:length(list) == 0}">
+      <h4 class="text-error">;( Sorry, no blogs matched your search. Please try agian.</h4>
+  </c:if> --%>
 
 				<ul>
 					<c:forEach var="blog" items="${blogData}">

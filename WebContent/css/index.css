@@ -1,14 +1,14 @@
 body {
-	padding-top:20px;
+	padding-top: 20px;
 }
 
 ul {
-	list-style:none;
-	margin:0px;
+	list-style: none;
+	margin: 0px;
 }
 
 h3#title {
-	padding-top:30px;
+	margin-top: 30px;
 }
 
 header.navbar {
@@ -18,17 +18,18 @@ header.navbar {
 div#manage {
 	margin-top: 10px;
 }
-div#manage > button {
+
+div#manage>button {
 	float: right;
 	margin-left: 10px;
 	width: 100px;
 }
 
 #loading {
-    position:   fixed;
-    z-index:    1000;
-    top:        0;
-    left:       0;
-    height:     100%;
-    width:      100%;
+	position: fixed;
+	z-index: 1000;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
 }

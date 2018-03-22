@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Blog;
+import model.User;
 import service.DataService;
 
 /**
@@ -18,26 +19,31 @@ import service.DataService;
 @WebServlet("/ViewBlogServlet")
 public class ViewBlogServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ViewBlogServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	public ViewBlogServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// if (request.getServletContext().getAttribute("user") == null) {
+		// response.sendRedirect("login");
+		// return;
+		// }
 		String blogIdStr = request.getParameter("blogid");
 		if (!blogIdStr.matches("\\d+")) {
 			response.getWriter().append("Error blog id: ").append(request.getContextPath());
 			return;
 		}
-		
+
 		int blogId = Integer.parseInt(blogIdStr);
 		DataService ds = new DataService();
 		try {
@@ -47,17 +53,23 @@ public class ViewBlogServlet extends HttpServlet {
 				return;
 			}
 			request.setAttribute("blog", blog);
-			request.getRequestDispatcher("ViewBlog.jsp").forward(request, response);
 			
+			Object user = request.getSession().getAttribute("user");
+			boolean isOwner = user != null && ((User)user).getId() == blog.getUserId();
+			request.setAttribute("isOwner", isOwner);
+			request.getRequestDispatcher("ViewBlog.jsp").forward(request, response);
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

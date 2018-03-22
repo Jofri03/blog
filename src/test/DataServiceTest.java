@@ -11,8 +11,9 @@ import model.Blog;
 import service.DataService;;
 
 class DataServiceTest {
-	
+
 	DataService ds = new DataService();
+
 	@Test
 	void getAllTest() {
 		try {
@@ -23,7 +24,7 @@ class DataServiceTest {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Test
 	void getOneTest() {
 		try {
@@ -33,7 +34,7 @@ class DataServiceTest {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Test
 	void modifyBlogTest() {
 		Blog blog;
@@ -46,9 +47,9 @@ class DataServiceTest {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
-	
+
 	@Test
 	void deleteBlogTest() {
 		try {
@@ -59,7 +60,7 @@ class DataServiceTest {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Test
 	void addBlogTest() {
 		try {
@@ -76,7 +77,5 @@ class DataServiceTest {
 			e.printStackTrace();
 		}
 	}
-	
-	
 
 }
